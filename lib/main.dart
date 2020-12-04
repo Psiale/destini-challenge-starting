@@ -6,6 +6,7 @@ void main() => runApp(Destini());
 class Destini extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: StoryPage(),
     );
@@ -50,7 +51,9 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: FlatButton(
                   onPressed: () {
-                    storyBrain.nextStory(1);
+                    setState(() {
+                      storyBrain.nextStory(1);
+                    });
                   },
                   color: Color.fromRGBO(92, 0, 58, .9),
                   child: Text(
@@ -66,17 +69,20 @@ class _StoryPageState extends State<StoryPage> {
               ),
               Expanded(
                 flex: 2,
-                //TODO: Step 26 - Use a Flutter Visibility Widget to wrap this FlatButton.
-                //TODO: Step 28 - Set the "visible" property of the Visibility Widget to equal the output from the buttonShouldBeVisible() method in the storyBrain.
-                child: FlatButton(
-                  onPressed: () {
-                    storyBrain.nextStory(2);
-                  },
-                  color: Color.fromRGBO(67, 0, 92, .9),
-                  child: Text(
-                    '${storyBrain.getChoice2()}',
-                    style: TextStyle(
-                      fontSize: 20.0,
+                child: Visibility(
+                  visible: storyBrain.buttonShouldBeVisible(),
+                  child: FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(2);
+                      });
+                    },
+                    color: Color.fromRGBO(67, 0, 92, .9),
+                    child: Text(
+                      '${storyBrain.getChoice2()}',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
