@@ -25,6 +25,11 @@ class _StoryPageState extends State<StoryPage> {
     return Scaffold(
       body: Container(
         //TODO: Step 1 - Add background.png to this Container as a background image.
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage("images/universe.jpg"),
+          fit: BoxFit.cover,
+        )),
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
         constraints: BoxConstraints.expand(),
         child: SafeArea(
@@ -50,7 +55,7 @@ class _StoryPageState extends State<StoryPage> {
                     //Choice 1 made by user.
                     //TODO: Step 18 - Call the nextStory() method from storyBrain and pass the number 1 as the choice made by the user.
                   },
-                  color: Colors.red,
+                  color: Color.fromRGBO(92, 0, 58, .9),
                   child: Text(
                     //TODO: Step 13 - Use the storyBrain to get the text for choice 1.
                     'Choice 1',
@@ -72,7 +77,7 @@ class _StoryPageState extends State<StoryPage> {
                     //Choice 2 made by user.
                     //TODO: Step 19 - Call the nextStory() method from storyBrain and pass the number 2 as the choice made by the user.
                   },
-                  color: Colors.blue,
+                  color: Color.fromRGBO(67, 0, 92, .9),
                   child: Text(
                     //TODO: Step 14 - Use the storyBrain to get the text for choice 2.
                     'Choice 2',
